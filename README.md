@@ -25,7 +25,7 @@ Template strings in HTML files use double curly braces syntax to reference prope
 <!-- In index.html -->
 <title>{{meta.title}}</title>
 
-<!-- Will be replaced with content from public/content/site-content.json -->
+<!-- Will be replaced with content from assets/content/site-content.json -->
 <!-- Where site-content.json contains: { "meta": { "title": "Jack Fitzgibbon | Software Engineer" } } -->
 ```
 

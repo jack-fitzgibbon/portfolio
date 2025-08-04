@@ -9,9 +9,9 @@
     "build": "npm run build:content && npm run clean && npm run build:mkdirs && npm run build:css && npm run build:html && npm run copy:assets",
     "build:css": "timestamp=$(date +%Y%m%d) && cleancss -o dist/css/styles.min.$timestamp.css css/styles.css && cleancss -o dist/css/reset.min.$timestamp.css css/reset.css",
     "build:html": "html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true --input-dir ./ --output-dir dist --file-ext html",
-    "build:mkdirs": "mkdir -p dist/css dist/public/images dist/public/fonts dist/public/content",
+    "build:mkdirs": "mkdir -p dist/css dist/assets/images dist/assets/fonts dist/assets/content",
     "build:content": "node scripts/inject-content.js",
-    "copy:assets": "cp favicon.ico dist/ && cp -r public/images/* dist/public/images/ && cp -r public/fonts/* dist/public/fonts/ && cp -r public/content/* dist/public/content/ && npm run update:html",
+    "copy:assets": "cp favicon.ico dist/ && cp -r assets/images/* dist/assets/images/ && cp -r assets/fonts/* dist/assets/fonts/ && cp -r assets/content/* dist/assets/content/ && npm run update:html",
     "update:html": "timestamp=$(date +%Y%m%d) && sed -i \"s/reset\\.min\\.css/reset.min.${timestamp}.css/g\" dist/index.html && sed -i \"s/styles\\.min\\.css/styles.min.${timestamp}.css/g\" dist/index.html"
   },
   "devDependencies": {

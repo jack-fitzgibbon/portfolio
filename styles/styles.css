@@ -1,35 +1,35 @@
 /* Font imports */
 @font-face {
-	font-family: "StyreneA";
-	src: url("../public/fonts/StyreneA-Regular.otf") format("opentype");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+  font-family: "StyreneA";
+  src: url("../assets/fonts/StyreneA-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: "StyreneA";
-	src: url("../public/fonts/StyreneA-Medium.otf") format("opentype");
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
+  font-family: "StyreneA";
+  src: url("../assets/fonts/StyreneA-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: "StyreneA";
-	src: url("../public/fonts/StyreneA-Bold.otf") format("opentype");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+  font-family: "StyreneA";
+  src: url("../assets/fonts/StyreneA-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 html {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 body {
-	font-family: "StyreneA", sans-serif;
-	line-height: 1.5;
+  font-family: "StyreneA", sans-serif;
+  line-height: 1.5;
 }
 
 h1,
@@ -38,6 +38,6 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "StyreneA", sans-serif;
-	font-weight: 700;
+  font-family: "StyreneA", sans-serif;
+  font-weight: 700;
 }
