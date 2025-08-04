@@ -6,10 +6,10 @@
 	"scripts": {
 		"dev": "live-server --port=3000 --no-browser",
 		"clean": "rm -rf dist",
-		"build": "npm run clean && mkdir -p dist/css dist/public/images && npm run build:css && npm run build:html && npm run copy:assets",
+		"build": "npm run clean && mkdir -p dist/css dist/public/images dist/public/fonts && npm run build:css && npm run build:html && npm run copy:assets",
 		"build:css": "timestamp=$(date +%Y%m%d) && cleancss -o dist/css/styles.min.$timestamp.css css/styles.css && cleancss -o dist/css/reset.min.$timestamp.css css/reset.css",
 		"build:html": "html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true --input-dir ./ --output-dir dist --file-ext html",
-		"copy:assets": "cp favicon.ico dist/ && cp -r public/images/* dist/public/images/ && npm run update:html",
+		"copy:assets": "cp favicon.ico dist/ && cp -r public/images/* dist/public/images/ && cp -r public/fonts/* dist/public/fonts/ && npm run update:html",
 		"update:html": "timestamp=$(date +%Y%m%d) && sed -i \"s/reset\\.min\\.css/reset.min.${timestamp}.css/g\" dist/index.html && sed -i \"s/styles\\.min\\.css/styles.min.${timestamp}.css/g\" dist/index.html",
 		"preview": "live-server --port=8000 --no-browser dist"
 	},
