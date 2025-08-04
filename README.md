@@ -1,28 +1,59 @@
 ## Overview
 
-A multi page website to present my personal portfolio for front end web development.
-
-Implemented ability to add projects and change information in the future by using Strapi, a headless CMS. Admin panel to manage the content of the website is accesible by jackfitzgibbon.com/admin.
-
-[Deployed website](https://www.jackfitzgibbon.dev)
-
-## Screenshot
-
-<img src="https://i.ibb.co/NVYyDy7/portfolio.png" alt="screenshots of portfolio">
-<p>Frontend (React)</p>
-
-<img src="https://i.ibb.co/rMH42mT/Screenshot-2022-01-29-at-21-49-28.png" alt="screenshot of cms admin panel">
-<p>CMS Admin Panel</p>
+A simple one-page portfolio website built with plain HTML and CSS.
 
 ## Built with
 
 - Semantic HTML5 Markup
-- React (create-react-app)
-- Strapi (headless CMS)
-- Apollo (GraphQL client)
-- SCSS
-- Getform.io (contact form email notifications)
+- Modern CSS with CSS Reset
+- Mobile-responsive design
+- No JavaScript dependencies
 
-## Acknowledgments
+## Development
 
-- [TypewriterJS - module that provides typewriter effect](https://www.npmjs.com/package/typewriter-effect)
+### Prerequisites
+
+- Node.js and npm installed on your machine
+
+### Installation
+
+```
+npm install
+```
+
+### Development Server (with hot reload)
+
+Run the development server that will automatically refresh on changes:
+
+```
+npm run dev
+```
+
+This will start a local server at http://localhost:3000
+
+### Production Build
+
+To create a minified production build:
+
+```
+npm run build
+```
+
+This will generate optimized files in the `dist` directory:
+- Minified HTML
+- Minified CSS
+- Optimized assets
+
+### Preview Production Build
+
+To preview the production build:
+
+```
+npm run preview
+```
+
+This will start a local server at http://localhost:8000 serving the production build.
+
+### Quick Start
+
+For quick viewing without development tools, you can simply open `index.html` directly in your browser.

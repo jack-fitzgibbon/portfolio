@@ -1,46 +1,23 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@apollo/client": "^3.5.8",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "graphql": "^16.2.0",
-    "node-sass": "^7.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-markdown": "^8.0.0",
-    "react-router-dom": "^6.2.1",
-    "react-router-hash-link": "^2.4.3",
-    "react-scripts": "5.0.0",
-    "scss": "^0.2.4",
-    "typewriter-effect": "^2.18.2",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "portfolio",
+	"version": "1.0.0",
+	"description": "Jack Fitzgibbon's Portfolio",
+	"private": true,
+	"scripts": {
+		"dev": "live-server --port=3000 --no-browser",
+		"clean": "rm -rf dist",
+		"build": "npm run clean && mkdir -p dist/css dist/public/images && npm run build:css && npm run build:html && npm run copy:assets",
+		"build:css": "timestamp=$(date +%Y%m%d) && cleancss -o dist/css/styles.min.$timestamp.css css/styles.css && cleancss -o dist/css/reset.min.$timestamp.css css/reset.css",
+		"build:html": "html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true --input-dir ./ --output-dir dist --file-ext html",
+		"copy:assets": "cp favicon.ico dist/ && cp -r public/images/* dist/public/images/ && npm run update:html",
+		"update:html": "timestamp=$(date +%Y%m%d) && sed -i \"s/reset\\.min\\.css/reset.min.${timestamp}.css/g\" dist/index.html && sed -i \"s/styles\\.min\\.css/styles.min.${timestamp}.css/g\" dist/index.html",
+		"preview": "live-server --port=8000 --no-browser dist"
+	},
+	"devDependencies": {
+		"clean-css-cli": "^5.6.3",
+		"html-minifier": "^4.0.0",
+		"live-server": "^1.2.2"
+	},
+	"author": "Jack Fitzgibbon",
+	"license": "MIT"
 }
