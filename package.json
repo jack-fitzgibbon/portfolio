@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "npm run clean --silent && npm run mkdirs --silent && node scripts/update-dist.js && npm run start-dev --silent",
     "start-dev": "concurrently \"npm run watch\" \"npm run serve-dist\"",
-    "watch": "nodemon --quiet --watch src/site-content.json --watch src/index.html --watch src/styles --watch src/assets --delay 500ms --exec \"node scripts/update-dist.js\"",
+    "watch": "nodemon --quiet --watch src/site-content.json --watch src/index.html --watch src/styles --watch src/assets --exec \"node scripts/update-dist.js\"",
     "build": "npm run clean && npm run mkdirs && npm run build:css && npm run build:html && npm run copy:build && npm run rewrite-css-paths && npm run inject-content",
-    "serve-dist": "live-server --port=3000 --entry-file=index.html --wait=1000 dist/",
+    "serve-dist": "live-server --port=3000 --entry-file=index.html dist/",
     "update-dist": "node scripts/update-dist.js",
     "clean": "rimraf dist",
     "mkdirs": "shx mkdir -p dist/styles dist/assets/images dist/assets/fonts",
