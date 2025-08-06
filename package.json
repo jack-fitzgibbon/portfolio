@@ -1,23 +1,32 @@
 {
-  "name": "portfolio",
+  "name": "jack-fitzgibbon",
   "version": "1.0.0",
   "description": "Jack Fitzgibbon's Portfolio",
   "private": true,
   "scripts": {
-    "dev": "live-server --port=3000 --no-browser",
-    "clean": "rm -rf dist",
-    "build": "npm run build:content && npm run clean && npm run build:mkdirs && npm run build:css && npm run build:html && npm run copy:assets",
-    "build:css": "timestamp=$(date +%Y%m%d) && cleancss -o dist/css/styles.min.$timestamp.css css/styles.css && cleancss -o dist/css/reset.min.$timestamp.css css/reset.css",
-    "build:html": "html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true --input-dir ./ --output-dir dist --file-ext html",
-    "build:mkdirs": "mkdir -p dist/css dist/assets/images dist/assets/fonts dist/assets/content",
-    "build:content": "node scripts/inject-content.js",
-    "copy:assets": "cp favicon.ico dist/ && cp -r assets/images/* dist/assets/images/ && cp -r assets/fonts/* dist/assets/fonts/ && cp -r assets/content/* dist/assets/content/ && npm run update:html",
-    "update:html": "timestamp=$(date +%Y%m%d) && sed -i \"s/reset\\.min\\.css/reset.min.${timestamp}.css/g\" dist/index.html && sed -i \"s/styles\\.min\\.css/styles.min.${timestamp}.css/g\" dist/index.html"
+    "dev": "npm run clean --silent && npm run mkdirs --silent && node scripts/update-dist.js && npm run start-dev --silent",
+    "start-dev": "concurrently \"npm run watch\" \"npm run serve-dist\"",
+    "watch": "nodemon --quiet --watch src/site-content.json --watch src/index.html --watch src/styles --watch src/assets --delay 500ms --exec \"node scripts/update-dist.js\"",
+    "build": "npm run clean && npm run mkdirs && npm run build:css && npm run build:html && npm run copy:build && npm run rewrite-css-paths && npm run inject-content",
+    "serve-dist": "live-server --port=3000 --entry-file=index.html --wait=1000 dist/",
+    "update-dist": "node scripts/update-dist.js",
+    "clean": "rimraf dist",
+    "mkdirs": "shx mkdir -p dist/styles dist/assets/images dist/assets/fonts",
+    "inject-content": "node scripts/inject-content.js",
+    "rewrite-css-paths": "timestamp=$(date +%Y%m%d) && sed -i \"s/reset\\.min\\.css/reset.min.${timestamp}.css/g\" dist/index.html && sed -i \"s/styles\\.min\\.css/styles.min.${timestamp}.css/g\" dist/index.html",
+    "build:css": "timestamp=$(date +%Y%m%d) && cleancss -o dist/styles/reset.min.$timestamp.css src/styles/reset.css && cleancss -o dist/styles/styles.min.$timestamp.css src/styles/styles.css",
+    "build:html": "html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true --input-dir src/ --output-dir dist --file-ext html",
+    "copy:dev": "shx cp src/assets/images/favicon.ico dist/assets/images && shx cp src/styles/reset.css dist/styles && shx cp src/styles/styles.css dist/styles && shx cp -r src/assets/images dist/assets && shx cp -r src/assets/fonts dist/assets && shx cp src/index.html dist/",
+    "copy:build": "shx cp src/assets/images/favicon.ico dist/assets/images && shx cp -r src/assets/images dist/assets && shx cp -r src/assets/fonts dist/assets && shx cp src/index.html dist/"
   },
   "devDependencies": {
     "clean-css-cli": "^5.6.3",
+    "concurrently": "^9.2.0",
     "html-minifier": "^4.0.0",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "nodemon": "^3.1.10",
+    "rimraf": "^6.0.1",
+    "shx": "^0.4.0"
   },
   "author": "Jack Fitzgibbon",
   "license": "MIT"
