@@ -1,21 +1,18 @@
 const fs = require('fs');
 const path = require('path');
 
-// Creates a directory if it doesn't exist
 function createDirectoryIfNotExists(directoryPath) {
 	if (!fs.existsSync(directoryPath)) {
 		fs.mkdirSync(directoryPath, { recursive: true });
 	}
 }
 
-// Copies a file, ensuring the destination directory exists
 function copyFile(src, destination) {
 	const destinationDirectory = path.dirname(destination);
 	createDirectoryIfNotExists(destinationDirectory);
 	fs.copyFileSync(src, destination);
 }
 
-// Recursively copies a directory
 function copyDirectory(src, destination) {
 	if (!fs.existsSync(src)) return;
 
@@ -35,7 +32,27 @@ function copyDirectory(src, destination) {
 	}
 }
 
+function writeFileIfChanged(filePath, content) {
+	let shouldWrite = true;
+	if (fs.existsSync(filePath)) {
+		const existingContent = fs.readFileSync(filePath, 'utf8');
+		if (existingContent === content) {
+			shouldWrite = false;
+		}
+	}
+
+	if (shouldWrite) {
+		createDirectoryIfNotExists(path.dirname(filePath));
+		fs.writeFileSync(filePath, content, 'utf8');
+	}
+
+	return shouldWrite;
+}
+
+
 module.exports = {
+	createDirectoryIfNotExists,
 	copyFile,
-	copyDirectory
+	copyDirectory,
+	writeFileIfChanged
 };

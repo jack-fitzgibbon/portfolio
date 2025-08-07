@@ -2,12 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 function injectContent() {
-	const contentPath = path.join(__dirname, '..', 'src', 'site-content.json');
+	const contentPath = path.join(__dirname, '..', '..', 'src', 'site-content.json');
 	const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
-	const htmlPath = path.join(__dirname, '..', 'dist', 'index.html');
+	const htmlPath = path.join(__dirname, '..', '..', 'dist', 'index.html');
 	const html = fs.readFileSync(htmlPath, 'utf8');
 	const processedHtml = processHtmlTemplate(html, content);
 	fs.writeFileSync(htmlPath, processedHtml);
+	return processedHtml;
 }
 
 function processHtmlTemplate(html, data) {

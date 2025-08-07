@@ -2,13 +2,6 @@
 
 A simple one-page portfolio website built with plain HTML and CSS.
 
-## Built with
-
-- Semantic HTML5 Markup
-- Modern CSS with CSS Reset
-- Mobile-responsive design
-- No JavaScript dependencies
-
 ## Development
 
 ### Prerequisites
@@ -25,11 +18,9 @@ Template strings in HTML files use double curly braces syntax to reference prope
 <!-- In index.html -->
 <title>{{meta.title}}</title>
 
-<!-- Will be replaced with content from assets/content/site-content.json -->
+<!-- Will be replaced with content from src/site-content.json -->
 <!-- Where site-content.json contains: { "meta": { "title": "Jack Fitzgibbon | Software Engineer" } } -->
 ```
-
-Content is injected during the build process with `npm run build:content` which runs the injection script.
 
 ### Installation
 
@@ -49,7 +40,7 @@ This will start a local server at http://localhost:3000
 
 ### Production Build
 
-To create a minified production build (this must be ran within a Bash-compatible terminal):
+To create a minified production build:
 
 ```
 npm run build
@@ -59,17 +50,3 @@ This will generate optimized files in the `dist` directory:
 
 - Minified HTML
 - Minified CSS
-
-### Preview Production Build
-
-To preview the production build:
-
-```
-npm run preview
-```
-
-This will start a local server at http://localhost:3000 serving the production build.
-
-### Quick Start
-
-For quick viewing without development tools, you can simply open `index.html` directly in your browser.
