@@ -8,20 +8,18 @@ const htmlMinifier = require('html-minifier').minify;
 const injectContent = require('./utils/inject-content.js');
 const { copyFile, copyDirectory, writeFileIfChanged } = require('./utils/files.js');
 
-const CONFIG = {
-	cssFiles: ['reset.css', 'styles.css'],
-	htmlMinifierOptions: {
-		collapseWhitespace: true,
-		removeComments: true,
-		removeOptionalTags: true,
-		removeRedundantAttributes: true,
-		removeScriptTypeAttributes: true,
-		removeTagWhitespace: true,
-		useShortDoctype: true,
-		minifyCSS: true,
-		minifyJS: true
-	}
-};
+
+const htmlMinifierOptions = {
+	collapseWhitespace: true,
+	removeComments: true,
+	removeOptionalTags: true,
+	removeRedundantAttributes: true,
+	removeScriptTypeAttributes: true,
+	removeTagWhitespace: true,
+	useShortDoctype: true,
+	minifyCSS: true,
+	minifyJS: true
+}
 
 function updateHtmlReferences(htmlPath, replacements) {
 	let html = fs.readFileSync(htmlPath, 'utf8');
@@ -64,8 +62,9 @@ function copyStaticAssets(srcDirectory, distDirectory) {
 
 function processCssFiles(srcDirectory, distDirectory, isProd) {
 	const cssReplacements = {};
+	const cssFiles = fs.readdirSync(path.join(srcDirectory, 'styles')).filter(file => file.endsWith('.css'));
 
-	CONFIG.cssFiles.forEach(cssFile => {
+	cssFiles.forEach(cssFile => {
 		const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
 		let cssContent = fs.readFileSync(srcCssPath, 'utf8');
 		let outCssName = cssFile;
