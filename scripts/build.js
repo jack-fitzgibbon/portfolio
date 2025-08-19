@@ -1,5 +1,3 @@
-
-
 const fs = require('fs');
 const path = require('path');
 const CleanCSS = require('clean-css');
@@ -7,7 +5,6 @@ const getHash = require('./utils/hash.js');
 const htmlMinifier = require('html-minifier').minify;
 const injectContent = require('./utils/inject-content.js');
 const { copyFile, copyDirectory, writeFileIfChanged } = require('./utils/files.js');
-
 
 const htmlMinifierOptions = {
 	collapseWhitespace: true,
@@ -21,13 +18,13 @@ const htmlMinifierOptions = {
 	minifyJS: true
 }
 
-function updateHtmlReferences(htmlPath, replacements) {
-	let html = fs.readFileSync(htmlPath, 'utf8');
-	Object.entries(replacements).forEach(([original, hashed]) => {
-		const regex = new RegExp(original.replace('.', '\\.'), 'g');
-		html = html.replace(regex, hashed);
-	});
-	fs.writeFileSync(htmlPath, html, 'utf8');
+function updateHtmlReferences(htmlContent, combinedCssFileName) {
+	const existingCssLinkTags = /<link[^>]*rel=["']stylesheet["'][^>]*>/gi
+	let updatedHtml = htmlContent.replace(existingCssLinkTags, '');
+	const cssLink = `<link rel="stylesheet" href="${combinedCssFileName}">`;
+	updatedHtml = updatedHtml.replace(/<\/head>/i, `  ${cssLink}\n</head>`);
+
+	return updatedHtml;
 }
 
 function setupDirectories() {
@@ -61,49 +58,63 @@ function copyStaticAssets(srcDirectory, distDirectory) {
 }
 
 function processCssFiles(srcDirectory, distDirectory, isProd) {
-	const cssReplacements = {};
-	const cssFiles = fs.readdirSync(path.join(srcDirectory, 'styles')).filter(file => file.endsWith('.css'));
+	if (isProd) {
+		const cssFiles = fs.readdirSync(path.join(srcDirectory, 'styles')).filter(file => file.endsWith('.css'));
+		let combinedCssContent = '';
 
-	cssFiles.forEach(cssFile => {
-		const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
-		let cssContent = fs.readFileSync(srcCssPath, 'utf8');
-		let outCssName = cssFile;
+		cssFiles.forEach(cssFile => {
+			const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
+			const cssContent = fs.readFileSync(srcCssPath, 'utf8');
+			combinedCssContent += cssContent + '\n\n';
+		});
 
-		if (isProd) {
-			cssContent = new CleanCSS().minify(cssContent).styles;
-			const hash = getHash(cssContent);
-			outCssName = cssFile.replace('.css', `.min.${hash}.css`);
-			cssReplacements[cssFile] = outCssName;
-		}
+		const finalCssContent = new CleanCSS().minify(combinedCssContent).styles;
+		const hash = getHash(finalCssContent);
+		const outCssName = `styles.min.${hash}.css`;
+		const outCssPath = path.join(distDirectory, outCssName);
+		writeFileIfChanged(outCssPath, finalCssContent);
 
-		const outCssPath = path.join(distDirectory, 'styles', outCssName);
-		writeFileIfChanged(outCssPath, cssContent);
-	});
+		return outCssName;
+	} else {
+		const cssReplacements = {};
+		const cssFiles = fs.readdirSync(path.join(srcDirectory, 'styles')).filter(file => file.endsWith('.css'));
 
-	return cssReplacements;
+		cssFiles.forEach(cssFile => {
+			const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
+			const cssContent = fs.readFileSync(srcCssPath, 'utf8');
+			const outCssPath = path.join(distDirectory, 'styles', cssFile);
+			writeFileIfChanged(outCssPath, cssContent);
+			cssReplacements[cssFile] = cssFile;
+		});
+
+		return cssReplacements;
+	}
 }
 
-function processHtmlFile(distDirectory, isProd, cssReplacements) {
+function processHtmlFile(distDirectory, isProd, cssFileInfo) {
 	let htmlContent = injectContent();
 	let outHtmlName = 'index.html';
 
 	if (isProd) {
+		htmlContent = updateHtmlReferences(htmlContent, cssFileInfo);
+
 		const distIndexHtml = path.join(distDirectory, 'index.html');
 		if (fs.existsSync(distIndexHtml)) {
 			fs.unlinkSync(distIndexHtml);
 		}
 
-		htmlContent = htmlMinifier(htmlContent, CONFIG.htmlMinifierOptions);
+		htmlContent = htmlMinifier(htmlContent, htmlMinifierOptions);
 		const hash = getHash(htmlContent);
 		outHtmlName = `index.min.${hash}.html`;
+	} else {
+		Object.entries(cssFileInfo).forEach(([original, hashed]) => {
+			const regex = new RegExp(original.replace('.', '\\.'), 'g');
+			htmlContent = htmlContent.replace(regex, hashed);
+		});
 	}
 
 	const outHtmlPath = path.join(distDirectory, outHtmlName);
 	fs.writeFileSync(outHtmlPath, htmlContent, 'utf8');
-
-	if (isProd) {
-		updateHtmlReferences(outHtmlPath, cssReplacements);
-	}
 
 	return outHtmlPath;
 }
@@ -114,8 +125,10 @@ function build() {
 		const { srcDirectory, distDirectory } = setupDirectories();
 
 		copyStaticAssets(srcDirectory, distDirectory);
-		const cssReplacements = processCssFiles(srcDirectory, distDirectory, isProd);
-		processHtmlFile(distDirectory, isProd, cssReplacements);
+		const combinedCssFileName = processCssFiles(srcDirectory, distDirectory, isProd);
+		processHtmlFile(distDirectory, isProd, combinedCssFileName);
+
+		console.log(`Build completed successfully. CSS combined into: ${combinedCssFileName}`);
 	} catch (error) {
 		console.error('Error during build:', error);
 		process.exit(1);
