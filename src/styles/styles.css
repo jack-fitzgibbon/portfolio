@@ -1,34 +1,9 @@
-/* Font imports */
-@font-face {
-  font-family: "StyreneA";
-  src: url("../assets/fonts/StyreneA-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "StyreneA";
-  src: url("../assets/fonts/StyreneA-Medium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "StyreneA";
-  src: url("../assets/fonts/StyreneA-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 html {
   font-size: 16px;
 }
 
 body {
-  font-family: "StyreneA", sans-serif;
+  font-family: "Manrope", sans-serif;
   line-height: 1.5;
 }
 
@@ -38,6 +13,81 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "StyreneA", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.container {
+  max-width: 896px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+.hero {
+  text-align: center;
+  padding-block: 6rem 2.25rem;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.hero address {
+  gap: 0.35rem;
+  display: flex;
+  margin-top: 0.25rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  justify-content: center;
+  color: hsl(var(--muted-foreground));
+}
+
+.hero address svg {
+  width: 1rem;
+}
+
+.social-links {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links svg {
+  width: 1.5rem;
+}
+
+.social-links a {
+  color: hsl(var(--muted-foreground));
+  transition: color 300ms ease-in-out;
+}
+
+.social-links a:hover {
+  color: hsl(var(--foreground));
+}
+
+@media (min-width: 768px) {
+  .hero {
+    text-align: left;
+    padding-block: 8rem 3rem;
+  }
+
+  .hero address {
+    justify-content: flex-start;
+  }
+
+  .social-links {
+    justify-content: flex-start;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.35rem;
+  }
 }
