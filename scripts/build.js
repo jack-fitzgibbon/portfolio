@@ -69,8 +69,7 @@ function processCssFiles(srcDirectory, distDirectory, isProd) {
 		});
 
 		const finalCssContent = new CleanCSS().minify(combinedCssContent).styles;
-		const hash = getHash(finalCssContent);
-		const outCssName = `styles.min.${hash}.css`;
+		const outCssName = 'styles.css';
 		const outCssPath = path.join(distDirectory, outCssName);
 		writeFileIfChanged(outCssPath, finalCssContent);
 
@@ -104,11 +103,9 @@ function processHtmlFile(distDirectory, isProd, cssFileInfo) {
 		}
 
 		htmlContent = htmlMinifier(htmlContent, htmlMinifierOptions);
-		const hash = getHash(htmlContent);
-		outHtmlName = `index.min.${hash}.html`;
 	} else {
 		Object.entries(cssFileInfo).forEach(([original, hashed]) => {
-			const regex = new RegExp(original.replace('.', '\\.'), 'g');
+			const regex = new RegExp(original.replace('.', '\.'), 'g');
 			htmlContent = htmlContent.replace(regex, hashed);
 		});
 	}

@@ -41,6 +41,15 @@ function replaceTemplateVariables(template, itemName, item) {
 	return result;
 }
 
+function replaceGlobalVariables(html, data) {
+	const placeholderRegex = /{{([^{}]+)}}/g;
+
+	return html.replace(placeholderRegex, (match, path) => {
+		const value = getNestedValue(data, path);
+		return value !== null ? value : match;
+	});
+}
+
 function processForEachLoops(html, data) {
 	let result = html;
 	let match;
@@ -75,20 +84,15 @@ function processForEachLoops(html, data) {
 	return result;
 }
 
+function getNestedValue(object, path) {
+	return path.split('.').reduce((obj, key) => {
+		return (obj && obj.hasOwnProperty(key)) ? obj[key] : null;
+	}, object);
+}
+
 function processHtmlTemplate(html, data) {
-	let processedHtml = processForEachLoops(html, data);
-
-	const placeholders = /{{([^{}]+)}}/g;
-
-	return processedHtml.replace(placeholders, (match, path) => {
-		const value = path.split('.').reduce((object, key) => {
-			if (!object) return null;
-			if (!object.hasOwnProperty(key)) return null;
-			return object[key];
-		}, data);
-
-		return value !== null ? value : match;
-	});
+	const htmlWithLoops = processForEachLoops(html, data);
+	return replaceGlobalVariables(htmlWithLoops, data);
 }
 
 module.exports = injectContent;
