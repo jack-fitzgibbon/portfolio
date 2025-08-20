@@ -64,7 +64,9 @@ function processCssFiles(srcDirectory, distDirectory, isProd) {
 
 		cssFiles.forEach(cssFile => {
 			const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
-			const cssContent = fs.readFileSync(srcCssPath, 'utf8');
+			let cssContent = fs.readFileSync(srcCssPath, 'utf8');
+			// Replace '../assets' with 'assets' for correct asset paths
+			cssContent = cssContent.replace(/\.\.\/assets\//g, 'assets/');
 			combinedCssContent += cssContent + '\n\n';
 		});
 
@@ -80,7 +82,8 @@ function processCssFiles(srcDirectory, distDirectory, isProd) {
 
 		cssFiles.forEach(cssFile => {
 			const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
-			const cssContent = fs.readFileSync(srcCssPath, 'utf8');
+			let cssContent = fs.readFileSync(srcCssPath, 'utf8');
+			cssContent = cssContent.replace(/\.\.\/assets\//g, 'assets/');
 			const outCssPath = path.join(distDirectory, 'styles', cssFile);
 			writeFileIfChanged(outCssPath, cssContent);
 			cssReplacements[cssFile] = cssFile;
