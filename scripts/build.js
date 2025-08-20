@@ -83,7 +83,11 @@ function processCssFiles(srcDirectory, distDirectory, isProd) {
 		cssFiles.forEach(cssFile => {
 			const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
 			let cssContent = fs.readFileSync(srcCssPath, 'utf8');
-			cssContent = cssContent.replace(/\.\.\/assets\//g, 'assets/');
+
+			if (isProd) {
+				cssContent = cssContent.replace(/\.\.\/assets\//g, 'assets/');
+			}
+
 			const outCssPath = path.join(distDirectory, 'styles', cssFile);
 			writeFileIfChanged(outCssPath, cssContent);
 			cssReplacements[cssFile] = cssFile;
