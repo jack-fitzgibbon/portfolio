@@ -21,6 +21,17 @@ h1 {
   font-size: 2.5rem;
 }
 
+h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-weight: 600;
+}
+
 .container {
   max-width: 896px;
   margin: 0 auto;
@@ -70,6 +81,71 @@ h1 {
 
 .social-links a:hover {
   color: hsl(var(--foreground));
+}
+
+.timeline {
+  gap: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline time {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.timeline article {
+  margin-left: 2.5rem;
+}
+
+.timeline article ul {
+  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  list-style-type: disc;
+  list-style-position: inside;
+  color: hsl(var(--muted-foreground));
+}
+
+.timeline > li {
+  position: relative;
+}
+
+.timeline article li:not(:first-child) {
+  margin-top: 0.25rem;
+}
+
+.timeline .logo {
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 100%;
+  background-color: black;
+  box-shadow: 0 0 0 4px white;
+}
+
+.timeline .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.timeline > li::before {
+  top: 2px;
+  left: 11px;
+  width: 2px;
+  content: "";
+  position: absolute;
+  height: calc(100% + 40px);
+  background-color: #e5e5e5;
+}
+
+.timeline > li:last-child::before {
+  height: 100%;
 }
 
 @media (min-width: 768px) {
