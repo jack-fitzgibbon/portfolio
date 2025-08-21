@@ -26,73 +26,109 @@ function findMatchingBrace(html, startIndex) {
 	return braceCount === 0 ? index : -1;
 }
 
-function replaceTemplateVariables(template, itemName, item) {
-	let result = template;
-
-	result = result.replace(new RegExp(`\\{\\{${itemName}\\.(\\w+)\\}\\}`, 'g'), (match, propName) => {
-		return item[propName] || '';
-	});
-
-	result = result.replace(new RegExp(`\\{\\{${itemName}\\.(\\w+(?:\\.\\w+)*)\\}\\}`, 'g'), (match, propPath) => {
-		const value = propPath.split('.').reduce((obj, key) => obj && obj[key], item);
-		return value || '';
-	});
-
-	return result;
+function getNestedValue(object, path) {
+	return path.split('.').reduce((object, key) => {
+		return (object && object.hasOwnProperty(key)) ? object[key] : null;
+	}, object);
 }
 
-function replaceGlobalVariables(html, data) {
-	const placeholderRegex = /{{([^{}]+)}}/g;
+function getDirectContextValue(path, itemContext) {
+	return itemContext.hasOwnProperty(path) ? itemContext[path] : undefined;
+}
 
-	return html.replace(placeholderRegex, (match, path) => {
-		const value = getNestedValue(data, path);
-		return value !== null ? value : match;
+function getNestedContextValue(path, itemContext) {
+	for (const [itemName, itemData] of Object.entries(itemContext)) {
+		if (path.startsWith(itemName + '.')) {
+			const propertyPath = path.substring(itemName.length + 1);
+			return getNestedValue(itemData, propertyPath);
+		}
+	}
+	return undefined;
+}
+
+function getGlobalValue(path, globalData) {
+	return getNestedValue(globalData, path);
+}
+
+function replaceVariables(template, globalData, itemContext = {}) {
+	const variablePattern = /{{([^{}]+)}}/g;
+
+	return template.replace(variablePattern, (match, rawPath) => {
+		const path = rawPath.trim();
+
+		const directValue = getDirectContextValue(path, itemContext);
+		if (directValue !== undefined && directValue !== null) return directValue;
+
+		const nestedValue = getNestedContextValue(path, itemContext);
+		if (nestedValue !== undefined && nestedValue !== null) return nestedValue;
+
+		const globalValue = getGlobalValue(path, globalData);
+		if (globalValue !== undefined && globalValue !== null) return globalValue;
+
+		return match;
 	});
 }
 
-function processForEachLoops(html, data) {
-	let result = html;
-	let match;
+function extractForEachBlocks(html) {
 	const forEachRegex = /@foreach\s*\(\s*([\w.]+)\s+as\s+(\w+)\s*\)\s*\{/gm;
+	const matches = Array.from(html.matchAll(forEachRegex));
 
-	while ((match = forEachRegex.exec(html)) !== null) {
+	return matches.map(match => {
 		const arrayPath = match[1];
 		const itemName = match[2];
 		const startIndex = match.index;
 		const openBraceIndex = html.indexOf('{', startIndex + match[0].length - 1);
 		const endIndex = findMatchingBrace(html, openBraceIndex);
-
-		if (endIndex === -1) continue;
-
+		if (endIndex === -1) return null;
 		const fullMatch = html.substring(startIndex, endIndex);
 		const template = html.substring(openBraceIndex + 1, endIndex - 1);
+		return { arrayPath, itemName, startIndex, endIndex, fullMatch, template };
+	}).filter(Boolean);
+}
 
-		const array = arrayPath.split('.').reduce((obj, key) => obj && obj[key], data);
-
-		if (!Array.isArray(array)) {
-			result = result.replace(fullMatch, '');
-			continue;
+function getDataFromArrayPath(arrayPath, globalData, itemContext) {
+	for (const [contextItemName, contextItemData] of Object.entries(itemContext)) {
+		if (arrayPath.startsWith(contextItemName + '.')) {
+			const nestedPath = arrayPath.substring(contextItemName.length + 1);
+			return getNestedValue(contextItemData, nestedPath);
 		}
+	}
+	return getNestedValue(globalData, arrayPath);
+}
 
-		const replacement = array.map(item => replaceTemplateVariables(template, itemName, item)).join('');
-		result = result.replace(fullMatch, replacement);
+function processForEachLoops(html, globalData, itemContext = {}) {
+	let result = html;
+	let blocks = extractForEachBlocks(result);
 
-		forEachRegex.lastIndex = 0;
-		html = result;
+	while (blocks.length > 0) {
+		for (const block of blocks) {
+			const data = getDataFromArrayPath(block.arrayPath, globalData, itemContext);
+
+			// If the data is not an array, remove the block
+			if (!Array.isArray(data)) {
+				result = result.replace(block.fullMatch, '');
+				continue;
+			}
+
+			const replacement = data.map(item => {
+				const newContext = { ...itemContext, [block.itemName]: item };
+				let processedTemplate = replaceVariables(block.template, globalData, newContext);
+				processedTemplate = processForEachLoops(processedTemplate, globalData, newContext);
+				return processedTemplate;
+			}).join('');
+
+			result = result.replace(block.fullMatch, replacement);
+		}
+		blocks = extractForEachBlocks(result);
 	}
 
 	return result;
 }
 
-function getNestedValue(object, path) {
-	return path.split('.').reduce((obj, key) => {
-		return (obj && obj.hasOwnProperty(key)) ? obj[key] : null;
-	}, object);
-}
-
 function processHtmlTemplate(html, data) {
-	const htmlWithLoops = processForEachLoops(html, data);
-	return replaceGlobalVariables(htmlWithLoops, data);
+	let result = processForEachLoops(html, data);
+	result = replaceVariables(result, data);
+	return result;
 }
 
 module.exports = injectContent;
