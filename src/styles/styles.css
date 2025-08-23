@@ -7,6 +7,11 @@ body {
   line-height: 1.5;
 }
 
+p {
+  line-height: 1.625;
+  color: hsl(var(--muted-foreground));
+}
+
 h1,
 h2,
 h3,
@@ -33,7 +38,7 @@ h3 {
 }
 
 section {
-  margin-bottom: 4rem !important;
+  margin-bottom: 3.5rem !important;
 }
 
 .container {
@@ -44,7 +49,7 @@ section {
 
 .hero {
   text-align: center;
-  padding-block: 6rem 2.25rem;
+  padding-block: 6rem 3rem;
 }
 
 .hero p {
@@ -103,6 +108,10 @@ section {
   margin-left: 2.5rem;
 }
 
+.timeline article h3 {
+  margin-bottom: 0.5rem;
+}
+
 .timeline article ul {
   margin-top: 0.4rem;
   font-size: 0.875rem;
@@ -157,7 +166,7 @@ section {
 @media (min-width: 768px) {
   .hero {
     text-align: left;
-    padding-block: 8rem 3rem;
+    padding-block: 8rem 3.5rem;
   }
 
   .hero address {

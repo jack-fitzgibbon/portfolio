@@ -27,6 +27,10 @@
         "iconSvg": "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4'/><path d='M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8'/></svg>"
       }
     ],
+    "about": {
+      "title": "About Me",
+      "content": "<p>I am a self-taught full stack developer with a proven track record of building complex, high-performance web and mobile applications. My experience spans real-time systems, 3D/AR technology, and scalable backend infrastructure, including revenue share platforms with automated payouts and race management systems handling multiple real-time updates per second.</p><br/><p>I excel at owning entire project lifecycles while delivering measurable results, such as achieving 500% build time improvements through strategic system migrations. I focus on translating business requirements into robust technical solutions that balance user needs with technical excellence.</p>"
+    },
     "careerJourney": {
       "title": "Career Journey",
       "timeline": [
