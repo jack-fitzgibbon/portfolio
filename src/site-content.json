@@ -31,18 +31,44 @@
       "title": "Career Journey",
       "timeline": [
         {
-          "dateRange": "2025 - Present",
-          "title": "Senior Software Engineer @ Eklipx",
+          "dateRange": "Jan 2025 - Present",
+          "title": "Developer Technologist @ Eklipx",
           "logoSrc": "assets/images/eklipx-logo.jpg",
-          "logoAlt": "Eklipx Logo",
-          "bullets": ["Led development of XYZ", "Reduced main API latency by 30%", "Mentored junior developers"]
+          "logoAlt": "Eklipx logo",
+          "bullets": [
+            "Architected and built an article view tracking system, including an analytics dashboard for authors with time series graphs and summary metrics.",
+            "Led the development of a revenue share calculation system, including logic implementation and PDF export functionality. Uses Stripe to make payouts to authors.",
+            "Implemented an end-to-end search experience using Meilisearch, syncing content from Strapi CMS with indexed documents and integrating front-end query functionality.",
+            "Developed and maintained an email notification system for subscribers to our Intelligence platform.",
+            "Introduced a Cypress end-to-end test suite covering all critical user flows, fully integrated into the Azure DevOps pipeline.",
+            "Gradually overhauled and modernised our Intelligence platform, improving maintainability, performance, and user experience."
+          ]
         },
         {
-          "dateRange": "2025 - Present",
-          "title": "Senior Software Engineer @ Eklipx",
-          "logoSrc": "assets/images/eklipx-logo.jpg",
-          "logoAlt": "Eklipx Logo",
-          "bullets": ["Led development of XYZ", "Reduced main API latency by 30%", "Mentored junior developers"]
+          "dateRange": "Aug 2022 - Jan 2025",
+          "title": "Full Stack Developer @ We Are Sweet",
+          "logoSrc": "assets/images/we-are-sweet-logo.png",
+          "logoAlt": "We Are Sweet logo",
+          "bullets": [
+            "Led migration from self-hosted TeamCity build system to GitHub Workflows, achieving 500% reduction in build times and decreased monthly infrastructure costs.",
+            "Developed front-end interface and race control system for cutting-edge second-screen app used by endurance sports organization, handling multiple real-time updates per second while maintaining optimal performance.",
+            "Built real-time race logistics management system integrating RFID chip timing and GPS data to deliver superior accuracy and reliability over multi-day events compared to competitor solutions.",
+            "Ensured cross-platform compatibility and optimal performance across mobile and desktop devices to maintain accessibility for diverse user base.",
+            "Contributed to AWS infrastructure development with focus on security and scalability to support high-volume live data processing."
+          ]
+        },
+        {
+          "dateRange": "Mar 2022 - Aug 2022",
+          "title": "Front End Developer @ Engine Creative",
+          "logoSrc": "assets/images/engine-creative-logo.png",
+          "logoAlt": "Engine Creative logo",
+          "bullets": [
+            "Independently developed innovative 3D product viewer using React and 3D/AR technology, enabling users to visualise products in their own space before purchasing.",
+            "Designed white-label solution with customizable branding, allowing easy adaptation of color schemes and logos for different client requirements.",
+            "Integrated advanced 3D/AR rendering and interaction capabilities to create immersive product preview experiences that enhanced user engagement.",
+            "Led complete project lifecycle from concept to deployment as sole developer, managing all aspects of development, testing, and client delivery.",
+            "Built and maintained WordPress websites and custom plugins tailored to specific client needs and requirements."
+          ]
         }
       ]
     }

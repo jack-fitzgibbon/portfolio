@@ -32,6 +32,10 @@ h3 {
   font-weight: 600;
 }
 
+section {
+  margin-bottom: 4rem !important;
+}
+
 .container {
   max-width: 896px;
   margin: 0 auto;
@@ -102,9 +106,11 @@ h3 {
 .timeline article ul {
   margin-top: 0.4rem;
   font-size: 0.875rem;
+  padding-left: 1.125rem;
   line-height: 1.25rem;
   list-style-type: disc;
   list-style-position: inside;
+  list-style-position: outside;
   color: hsl(var(--muted-foreground));
 }
 
