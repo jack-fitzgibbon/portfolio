@@ -49,7 +49,7 @@ section {
 
 .hero {
   text-align: center;
-  padding-block: 6rem 3rem;
+  padding-block: 4rem 3rem;
 }
 
 .hero p {
@@ -166,7 +166,7 @@ section {
 @media (min-width: 768px) {
   .hero {
     text-align: left;
-    padding-block: 8rem 3.5rem;
+    padding-block: 5rem 3.5rem;
   }
 
   .hero address {
@@ -179,6 +179,9 @@ section {
 
   h1 {
     font-size: 3rem;
-    margin-bottom: 0.35rem;
+  }
+
+  main {
+    padding-bottom: 3.5rem;
   }
 }
