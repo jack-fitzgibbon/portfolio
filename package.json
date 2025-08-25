@@ -18,7 +18,8 @@
     "html-minifier": "^4.0.0",
     "live-server": "^1.2.2",
     "nodemon": "^3.1.10",
-    "shx": "^0.4.0"
+    "shx": "^0.4.0",
+    "terser": "^5.43.1"
   },
   "author": "Jack Fitzgibbon",
   "license": "MIT"
