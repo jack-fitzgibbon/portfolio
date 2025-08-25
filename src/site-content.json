@@ -54,7 +54,7 @@
           "logoAlt": "We Are Sweet logo",
           "bullets": [
             "Led migration from self-hosted TeamCity build system to GitHub Workflows, achieving 500% reduction in build times and decreased monthly infrastructure costs.",
-            "Developed front-end interface and race control system for cutting-edge second-screen app used by endurance sports organization, handling multiple real-time updates per second while maintaining optimal performance.",
+            "Developed <a target='_blank' rel='noopener noreferrer' href='https://t100triathlon.com/lake-las-vegas/pro/live-race-data/'>front-end interface</a> and race control system for cutting-edge second-screen app used by endurance sports organization, handling multiple real-time updates per second while maintaining optimal performance.",
             "Built real-time race logistics management system integrating RFID chip timing and GPS data to deliver superior accuracy and reliability over multi-day events compared to competitor solutions.",
             "Ensured cross-platform compatibility and optimal performance across mobile and desktop devices to maintain accessibility for diverse user base.",
             "Contributed to AWS infrastructure development with focus on security and scalability to support high-volume live data processing."
@@ -69,7 +69,7 @@
             "Architected and built an article view tracking system, including an analytics dashboard for authors with time series graphs and summary metrics.",
             "Led the development of a revenue share calculation system, including logic implementation and PDF export functionality. Uses Stripe to make payouts to authors.",
             "Implemented an end-to-end search experience using Meilisearch, syncing content from Strapi CMS with indexed documents and integrating front-end query functionality.",
-            "Developed and maintained an email notification system for subscribers to our Intelligence platform.",
+            "Developed and maintained an email notification system for subscribers to our <a target='_blank' rel='noopener noreferrer' href='https://intelligence.eklipx.io/'>Intelligence platform</a>.",
             "Introduced a Cypress end-to-end test suite covering all critical user flows, fully integrated into the Azure DevOps pipeline.",
             "Gradually overhauled and modernised our Intelligence platform, improving maintainability, performance, and user experience."
           ]
