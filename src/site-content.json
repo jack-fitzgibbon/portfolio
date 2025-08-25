@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Jack Fitzgibbon - Technologist",
+    "title": "Jack Fitzgibbon - Software Engineer & Technologist",
     "description": "London based Software Engineer and Technologist. Building complex, high-performance web and mobile applications.",
     "url": "https://jackfitzgibbon.dev/"
   },
@@ -29,7 +29,7 @@
     ],
     "about": {
       "title": "About Me",
-      "content": "<p>I am a self-taught software engineer with a proven track record of building complex, high-performance web and mobile applications. My experience spans real-time systems, 3D/AR technology, and scalable backend infrastructure, including revenue share platforms with automated payouts and race management systems handling multiple real-time updates per second.</p><br/><p>I excel at owning entire project lifecycles while delivering measurable results, such as achieving 500% build time improvements through strategic system migrations. I focus on translating business requirements into robust technical solutions that balance user needs with technical excellence.</p>"
+      "content": "<p>I am a self-taught software engineer and technologist a proven track record of building complex, high-performance web and mobile applications. My experience spans real-time systems, 3D/AR technology, and scalable backend infrastructure, including revenue share platforms with automated payouts and race management systems handling multiple real-time updates per second.</p><br/><p>I excel at owning entire project lifecycles while delivering measurable results, such as achieving 500% build time improvements through strategic system migrations. I focus on translating business requirements into robust technical solutions that balance user needs with technical excellence.</p>"
     },
     "careerJourney": {
       "title": "Career Journey",
@@ -40,7 +40,7 @@
           "logoSrc": "assets/images/engine-creative-logo.png",
           "logoAlt": "Engine Creative logo",
           "bullets": [
-            "Independently developed innovative 3D product viewer using React and 3D/AR technology, enabling users to visualise products in their own space before purchasing.",
+            "Independently developed innovative <a target='_blank' rel='noopener noreferrer' href='https://www.reydar.com/solutions/3d-product-viewer-for-ecommerce/'>3D product viewer</a> using React and 3D/AR technology, enabling users to visualise products in their own space before purchasing.",
             "Designed white-label solution with customizable branding, allowing easy adaptation of color schemes and logos for different client requirements.",
             "Integrated advanced 3D/AR rendering and interaction capabilities to create immersive product preview experiences that enhanced user engagement.",
             "Led complete project lifecycle from concept to deployment as sole developer, managing all aspects of development, testing, and client delivery.",

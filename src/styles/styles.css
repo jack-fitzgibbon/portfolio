@@ -41,6 +41,11 @@ h3 {
   font-weight: 600;
 }
 
+a {
+  color: hsl(var(--primary));
+  transition: color var(--transition-duration) ease-in-out;
+}
+
 section {
   margin-bottom: 3.5rem !important;
 }
