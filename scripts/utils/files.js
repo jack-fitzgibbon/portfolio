@@ -32,27 +32,8 @@ function copyDirectory(src, destination) {
 	}
 }
 
-function writeFileIfChanged(filePath, content) {
-	let shouldWrite = true;
-	if (fs.existsSync(filePath)) {
-		const existingContent = fs.readFileSync(filePath, 'utf8');
-		if (existingContent === content) {
-			shouldWrite = false;
-		}
-	}
-
-	if (shouldWrite) {
-		createDirectoryIfNotExists(path.dirname(filePath));
-		fs.writeFileSync(filePath, content, 'utf8');
-	}
-
-	return shouldWrite;
-}
-
-
 module.exports = {
 	createDirectoryIfNotExists,
 	copyFile,
 	copyDirectory,
-	writeFileIfChanged
 };

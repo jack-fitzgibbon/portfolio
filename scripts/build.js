@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const terser = require('terser');
 const CleanCSS = require('clean-css');
-const getHash = require('./utils/hash.js');
 const htmlMinifier = require('html-minifier').minify;
 const injectContent = require('./utils/inject-content.js');
-const { copyFile, copyDirectory, writeFileIfChanged } = require('./utils/files.js');
+const { copyFile, copyDirectory } = require('./utils/files.js');
 
 const htmlMinifierOptions = {
 	collapseWhitespace: true,
@@ -16,15 +16,6 @@ const htmlMinifierOptions = {
 	useShortDoctype: true,
 	minifyCSS: true,
 	minifyJS: true
-}
-
-function updateHtmlReferences(htmlContent, combinedCssFileName) {
-	const existingCssLinkTags = /<link[^>]*rel=["']stylesheet["'][^>]*>/gi
-	let updatedHtml = htmlContent.replace(existingCssLinkTags, '');
-	const cssLink = `<link rel="stylesheet" href="${combinedCssFileName}">`;
-	updatedHtml = updatedHtml.replace(/<\/head>/i, `  ${cssLink}\n</head>`);
-
-	return updatedHtml;
 }
 
 function setupDirectories() {
@@ -55,84 +46,90 @@ function copyStaticAssets(srcDirectory, distDirectory) {
 		path.join(srcDirectory, 'assets', 'fonts'),
 		path.join(distDirectory, 'assets', 'fonts')
 	);
+
+	copyDirectory(
+		path.join(srcDirectory, 'scripts'),
+		path.join(distDirectory, 'scripts')
+	);
+
+	copyDirectory(
+		path.join(srcDirectory, 'styles'),
+		path.join(distDirectory, 'styles')
+	);
 }
 
-function processCssFiles(srcDirectory, distDirectory, isProd) {
-	if (isProd) {
-		const cssFiles = fs.readdirSync(path.join(srcDirectory, 'styles')).filter(file => file.endsWith('.css'));
-		let combinedCssContent = '';
+function processCssFilesInline(srcDirectory) {
+	const cssFiles = fs.readdirSync(path.join(srcDirectory, 'styles')).filter(file => file.endsWith('.css'));
+	let combinedCssContent = '';
+	cssFiles.forEach(cssFile => {
+		const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
+		let cssContent = fs.readFileSync(srcCssPath, 'utf8');
+		cssContent = cssContent.replace(/\.\.\/assets\//g, 'assets/');
+		combinedCssContent += cssContent + '\n\n';
+	});
+	return new CleanCSS().minify(combinedCssContent).styles;
+}
 
-		cssFiles.forEach(cssFile => {
-			const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
-			let cssContent = fs.readFileSync(srcCssPath, 'utf8');
-			// Replace '../assets' with 'assets' for correct asset paths
-			cssContent = cssContent.replace(/\.\.\/assets\//g, 'assets/');
-			combinedCssContent += cssContent + '\n\n';
-		});
-
-		const finalCssContent = new CleanCSS().minify(combinedCssContent).styles;
-		const outCssName = 'styles.css';
-		const outCssPath = path.join(distDirectory, outCssName);
-		writeFileIfChanged(outCssPath, finalCssContent);
-
-		return outCssName;
-	} else {
-		const cssReplacements = {};
-		const cssFiles = fs.readdirSync(path.join(srcDirectory, 'styles')).filter(file => file.endsWith('.css'));
-
-		cssFiles.forEach(cssFile => {
-			const srcCssPath = path.join(srcDirectory, 'styles', cssFile);
-			let cssContent = fs.readFileSync(srcCssPath, 'utf8');
-
-			if (isProd) {
-				cssContent = cssContent.replace(/\.\.\/assets\//g, 'assets/');
-			}
-
-			const outCssPath = path.join(distDirectory, 'styles', cssFile);
-			writeFileIfChanged(outCssPath, cssContent);
-			cssReplacements[cssFile] = cssFile;
-		});
-
-		return cssReplacements;
+async function processJavaScriptFilesInline(srcDirectory) {
+	const jsFiles = fs.readdirSync(path.join(srcDirectory, 'scripts')).filter(file => file.endsWith('.js'));
+	let combinedJs = '';
+	for (const jsFile of jsFiles) {
+		const srcJsPath = path.join(srcDirectory, 'scripts', jsFile);
+		let jsContent = fs.readFileSync(srcJsPath, 'utf8');
+		jsContent = jsContent.replace(/\.\.\/assets\//g, 'assets/');
+		combinedJs += jsContent + '\n';
 	}
+	const minified = await terser.minify(combinedJs);
+	return minified.code || combinedJs;
 }
 
-function processHtmlFile(distDirectory, isProd, cssFileInfo) {
+function processHtmlFileInline(distDirectory, minifiedCss, minifiedJs) {
 	let htmlContent = injectContent();
 	let outHtmlName = 'index.html';
 
-	if (isProd) {
-		htmlContent = updateHtmlReferences(htmlContent, cssFileInfo);
-
-		const distIndexHtml = path.join(distDirectory, 'index.html');
-		if (fs.existsSync(distIndexHtml)) {
-			fs.unlinkSync(distIndexHtml);
-		}
-
-		htmlContent = htmlMinifier(htmlContent, htmlMinifierOptions);
-	} else {
-		Object.entries(cssFileInfo).forEach(([original, hashed]) => {
-			const regex = new RegExp(original.replace('.', '\.'), 'g');
-			htmlContent = htmlContent.replace(regex, hashed);
-		});
-	}
+	htmlContent = htmlContent.replace(/<link rel="stylesheet"[^>]*>/g, '');
+	htmlContent = htmlContent.replace(/<script src="\.\/scripts\/[^"]+" defer><\/script>/g, '');
+	htmlContent = htmlContent.replace(/<\/head>/i, `  <style>${minifiedCss}</style>\n</head>`);
+	htmlContent = htmlContent.replace(/<\/body>/i, `  <script>${minifiedJs}</script>\n</body>`);
+	htmlContent = htmlMinifier(htmlContent, htmlMinifierOptions);
 
 	const outHtmlPath = path.join(distDirectory, outHtmlName);
 	fs.writeFileSync(outHtmlPath, htmlContent, 'utf8');
-
 	return outHtmlPath;
 }
 
-function build() {
+async function build() {
 	try {
 		const isProd = process.argv.includes('--prod');
 		const { srcDirectory, distDirectory } = setupDirectories();
 
-		copyStaticAssets(srcDirectory, distDirectory);
-		const combinedCssFileName = processCssFiles(srcDirectory, distDirectory, isProd);
-		processHtmlFile(distDirectory, isProd, combinedCssFileName);
+		if (isProd) {
+			if (fs.existsSync(distDirectory)) {
+				fs.readdirSync(distDirectory).forEach(file => {
+					if (file !== 'assets') {
+						const filePath = path.join(distDirectory, file);
+						if (fs.lstatSync(filePath).isDirectory()) {
+							fs.rmSync(filePath, { recursive: true, force: true });
+						} else {
+							fs.unlinkSync(filePath);
+						}
+					}
+				});
+			}
 
-		console.log(`Build completed successfully. CSS combined into: ${combinedCssFileName}`);
+			copyDirectory(path.join(srcDirectory, 'assets'), path.join(distDirectory, 'assets'));
+
+			const minifiedCss = processCssFilesInline(srcDirectory);
+			const minifiedJs = await processJavaScriptFilesInline(srcDirectory);
+			processHtmlFileInline(distDirectory, minifiedCss, minifiedJs);
+
+			console.log('Build completed successfully. All CSS and JS inlined into index.html.');
+		} else {
+			copyStaticAssets(srcDirectory, distDirectory);
+			const distIndexHtml = path.join(distDirectory, 'index.html');
+			let htmlContent = injectContent();
+			fs.writeFileSync(distIndexHtml, htmlContent, 'utf8');
+		}
 	} catch (error) {
 		console.error('Error during build:', error);
 		process.exit(1);

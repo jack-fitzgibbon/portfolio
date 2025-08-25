@@ -3,13 +3,14 @@ html {
 }
 
 body {
-  font-family: "Manrope", sans-serif;
   line-height: 1.5;
+  font-family: "Manrope", sans-serif;
 }
 
 p {
   line-height: 1.625;
   color: hsl(var(--muted-foreground));
+  transition: color var(--transition-duration) ease-in-out;
 }
 
 h1,
@@ -18,8 +19,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
+  color: hsl(var(--foreground));
+  font-family: "Manrope", sans-serif;
+  transition: color var(--transition-duration) ease-in-out;
 }
 
 h1 {
@@ -42,6 +45,40 @@ section {
   margin-bottom: 3.5rem !important;
 }
 
+html {
+  background-color: hsl(var(--background));
+  transition: background-color var(--transition-duration) ease-in-out;
+}
+
+#dark-mode-toggle {
+  --size: 40px;
+  --inset: 1.5rem;
+
+  border: none;
+  display: flex;
+  position: fixed;
+  top: var(--inset);
+  width: var(--size);
+  height: var(--size);
+  right: var(--inset);
+  align-items: center;
+  border-radius: 0.75rem;
+  justify-content: center;
+  background-color: transparent;
+  transition: background-color var(--transition-duration) ease-in-out;
+}
+
+#dark-mode-toggle:hover {
+  cursor: pointer;
+  background-color: hsl(var(--accent-foreground));
+}
+
+#dark-mode-toggle svg {
+  width: 1.2rem;
+  stroke: hsl(var(--foreground));
+  transition: stroke var(--transition-duration) ease-in-out;
+}
+
 .container {
   max-width: 896px;
   margin: 0 auto;
@@ -50,7 +87,7 @@ section {
 
 .hero {
   text-align: center;
-  padding-block: 4rem 3rem;
+  padding-block: 5rem 3rem;
 }
 
 .hero p {
@@ -86,7 +123,7 @@ section {
 
 .social-links a {
   color: hsl(var(--muted-foreground));
-  transition: color 300ms ease-in-out;
+  transition: color var(--transition-duration) ease-in-out;
 }
 
 .social-links a:hover {
@@ -140,7 +177,8 @@ section {
   position: absolute;
   border-radius: 100%;
   background-color: black;
-  box-shadow: 0 0 0 4px white;
+  box-shadow: 0 0 0 4px hsl(var(--background));
+  transition: box-shadow var(--transition-duration) ease-in-out;
 }
 
 .timeline .logo img {
@@ -157,7 +195,8 @@ section {
   content: "";
   position: absolute;
   height: calc(100% + 40px);
-  background-color: #e5e5e5;
+  background-color: hsl(var(--border));
+  transition: background-color var(--transition-duration) ease-in-out;
 }
 
 .timeline > li:last-child::before {
