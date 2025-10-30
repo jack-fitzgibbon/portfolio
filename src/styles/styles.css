@@ -186,6 +186,10 @@ html {
   transition: box-shadow var(--transition-duration) ease-in-out;
 }
 
+.about-me p {
+  margin-bottom: 1.1rem;
+}
+
 .timeline .logo img {
   width: 100%;
   height: 100%;

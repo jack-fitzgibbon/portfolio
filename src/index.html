@@ -64,7 +64,11 @@
 
       <section class="container">
         <h2>{{content.about.title}}</h2>
-        <div>{{content.about.content}}</div>
+        <div class="about-me">
+          @foreach (content.about.paras as para) {
+          <p>{{para}}</p>
+          }
+        </div>
       </section>
 
       <section class="container">
