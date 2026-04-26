@@ -72,6 +72,32 @@
       </section>
 
       <section class="container">
+        <h2>{{content.projects.title}}</h2>
+        <ul class="projects">
+          @foreach (content.projects.items as project) {
+          <li>
+            <a href="{{project.url}}" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="{{project.imageSrc}}" alt="{{project.imageAlt}}" loading="lazy" />
+              </div>
+              <article>
+                <h3>
+                  <span>{{project.name}}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M7 7h10v10"></path>
+                  </svg>
+                </h3>
+                <p>{{project.description}}</p>
+                <span class="link-label">{{project.linkLabel}}</span>
+              </article>
+            </a>
+          </li>
+          }
+        </ul>
+      </section>
+
+      <section class="container">
         <h2>{{content.careerJourney.title}}</h2>
         <ul class="timeline">
           @foreach (content.careerJourney.timeline as item) {

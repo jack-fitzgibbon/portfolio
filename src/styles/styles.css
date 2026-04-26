@@ -190,6 +190,86 @@ html {
   margin-bottom: 1.1rem;
 }
 
+.projects {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects a {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  transition:
+    border-color var(--transition-duration) ease-in-out,
+    background-color var(--transition-duration) ease-in-out;
+}
+
+.projects a:hover,
+.projects a:focus-visible {
+  background-color: hsl(var(--secondary));
+  border-color: hsl(var(--muted-foreground));
+}
+
+.project-image {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-color: hsl(var(--secondary));
+  border-bottom: 1px solid hsl(var(--border));
+  transition:
+    border-color var(--transition-duration) ease-in-out,
+    background-color var(--transition-duration) ease-in-out;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
+.projects article {
+  flex: 1;
+  display: flex;
+  padding: 1.25rem;
+  flex-direction: column;
+}
+
+.projects h3 {
+  gap: 0.4rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.projects h3 svg {
+  opacity: 0.6;
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+.projects a:hover h3 svg,
+.projects a:focus-visible h3 svg {
+  transform: translate(2px, -2px);
+}
+
+.projects p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.projects .link-label {
+  font-size: 0.8rem;
+  color: hsl(var(--muted-foreground));
+  transition: color var(--transition-duration) ease-in-out;
+}
+
 .timeline .logo img {
   width: 100%;
   height: 100%;
@@ -232,5 +312,17 @@ html {
 
   main {
     padding-bottom: 3.5rem;
+  }
+
+  .projects a {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .project-image {
+    flex: 0 0 40%;
+    aspect-ratio: auto;
+    border-bottom: none;
+    border-right: 1px solid hsl(var(--border));
   }
 }
