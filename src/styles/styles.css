@@ -217,7 +217,6 @@ html {
 
 .project-image {
   overflow: hidden;
-  aspect-ratio: 16 / 9;
   background-color: hsl(var(--secondary));
   border-bottom: 1px solid hsl(var(--border));
   transition:
@@ -227,10 +226,8 @@ html {
 
 .project-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
-  object-position: top;
 }
 
 .projects article {
@@ -321,8 +318,13 @@ html {
 
   .project-image {
     flex: 0 0 40%;
-    aspect-ratio: auto;
     border-bottom: none;
     border-right: 1px solid hsl(var(--border));
+  }
+
+  .project-image img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
   }
 }
