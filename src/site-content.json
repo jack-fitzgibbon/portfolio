@@ -43,15 +43,15 @@
           "description": "GDPR-compliant marketing site for a London-based fire curtain installation and maintenance specialist. Built with Astro, scoring 95+ across all Lighthouse metrics, and SEO-optimised to drive inbound leads. Microsoft Clarity wired up for behavioural insight, with Attio CRM integration handling form submissions.",
           "url": "https://embrfire.co.uk",
           "linkLabel": "embrfire.co.uk",
-          "imageSrc": "assets/images/embr-screenshot.png",
-          "imageAlt": "Screenshot of the embr fire protection marketing site",
+          "imageSrc": "assets/images/embr-2.png",
+          "imageAlt": "embr fire protection contact page",
           "infoNote": [
             "Login required — contact me for demo credentials."
           ],
           "secondaryImage": [
             {
-              "src": "assets/images/embr-screenshot.png",
-              "alt": "Screenshot of the embr fire protection marketing site"
+              "src": "assets/images/embr-1.png",
+              "alt": "embr fire protection home page hero"
             }
           ]
         },
@@ -60,12 +60,12 @@
           "description": "A 3D & AR product viewer letting customers visualise products in their own space before buying. Built for Reydar and used by brands including Samsung, Howdens, HP and Ultimaker — rendering via google/model-viewer, with a Preact client and AWS S3/Lambda serving the models.",
           "url": "https://reybeam.reydar.com/?config_uuid=48f516d4-d9f1-4b6b-9a51-f98f6f9d9a9f",
           "linkLabel": "reybeam.reydar.com",
-          "imageSrc": "assets/images/ar-viewer.png",
-          "imageAlt": "A 3D-rendered product shown in the Reydar 3D/AR product viewer",
+          "imageSrc": "assets/images/model-viewer-2.png",
+          "imageAlt": "AR view-in-your-space QR prompt in the 3D product viewer",
           "secondaryImage": [
             {
-              "src": "assets/images/ar-viewer.png",
-              "alt": "A 3D-rendered product shown in the Reydar 3D/AR product viewer"
+              "src": "assets/images/model-viewer-1.png",
+              "alt": "Saunders hygienic ball valve rendered in the 3D product viewer"
             }
           ]
         },
@@ -74,15 +74,15 @@
           "description": "A full CRUD invoice manager — create, edit, delete and filter invoices by status, with form validation, light/dark themes and a responsive layout. One of my earliest portfolio builds while learning web development.",
           "url": "https://invoice-app.onrender.com/",
           "linkLabel": "invoice-app.onrender.com",
-          "imageSrc": "assets/images/invoice-app.png",
-          "imageAlt": "Screenshot of the Invoice App landing screen",
+          "imageSrc": "assets/images/invoice-app-1.png",
+          "imageAlt": "Invoice App edit-invoice form",
           "infoNote": [
             "Login required — contact me for demo credentials."
           ],
           "secondaryImage": [
             {
-              "src": "assets/images/invoice-app.png",
-              "alt": "Screenshot of the Invoice App landing screen"
+              "src": "assets/images/invoice-app-2.png",
+              "alt": "Invoice App invoices list"
             }
           ]
         }
@@ -117,7 +117,7 @@
           ],
           "bullets": [
             "Built the front end for an industry-first real-time second-screen experience for the PTO, winning the 2024 ISC Innovation Award; sustained multiple updates per second without degrading performance.",
-            "Engineered a real-time race-logistics system fusing RFID chip-timing and GPS data, delivering better multi-day accuracy and reliability than competitor solutions.",
+            "Integrated RFID chip-timing and GPS data into a real-time race-logistics system — transforming and cleaning it before pushing it out to clients via AWS AppSync.",
             "Helped transition the company to a SaaS model, developing the React client for the second-screen product aimed at endurance sports.",
             "Provisioned and managed AWS infrastructure with Pulumi (IaC), prioritising security and scalability for high-volume live data.",
             "Maintained and extended the Concerts for Carers site and ticket-balloting system."
