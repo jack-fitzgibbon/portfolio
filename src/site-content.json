@@ -39,7 +39,7 @@
       "title": "Projects",
       "items": [
         {
-          "name": "embr",
+          "name": "Embr Marketing Website",
           "description": "GDPR-compliant marketing site for a London-based fire curtain installation and maintenance specialist. Built with Astro, scoring 95+ across all Lighthouse metrics, and SEO-optimised to drive inbound leads. Microsoft Clarity wired up for behavioural insight, with Attio CRM integration handling form submissions.",
           "url": "https://embrfire.co.uk",
           "linkLabel": "embrfire.co.uk",
