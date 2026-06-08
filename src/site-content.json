@@ -117,7 +117,7 @@
           ],
           "bullets": [
             "Built the front end for an industry-first real-time second-screen experience for the PTO, winning the 2024 ISC Innovation Award; sustained multiple updates per second without degrading performance.",
-            "Integrated RFID chip-timing and GPS data into a real-time race-logistics system — transforming and cleaning it before pushing it out to clients via AWS AppSync.",
+            "Integrated RFID chip-timing and GPS data into a real-time race-logistics system — storing raw and processed data in DynamoDB, transforming and cleaning it before pushing it out to clients via AWS AppSync.",
             "Helped transition the company to a SaaS model, developing the React client for the second-screen product aimed at endurance sports.",
             "Provisioned and managed AWS infrastructure with Pulumi (IaC), prioritising security and scalability for high-volume live data.",
             "Maintained and extended the Concerts for Carers site and ticket-balloting system."
