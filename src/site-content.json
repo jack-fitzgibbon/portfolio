@@ -45,6 +45,25 @@
           "linkLabel": "embrfire.co.uk",
           "imageSrc": "assets/images/embr-screenshot.png",
           "imageAlt": "Screenshot of the embr fire protection marketing site"
+        },
+        {
+          "name": "3D/AR Product Viewer",
+          "description": "A 3D & AR product viewer letting customers visualise products in their own space before buying. Built for Reydar and used by brands including Samsung, Howdens, HP and Ultimaker — rendering via google/model-viewer, with a Preact client and AWS S3/Lambda serving the models.",
+          "url": "https://reybeam.reydar.com/?config_uuid=48f516d4-d9f1-4b6b-9a51-f98f6f9d9a9f",
+          "linkLabel": "reybeam.reydar.com",
+          "imageSrc": "assets/images/ar-viewer.png",
+          "imageAlt": "A 3D-rendered product shown in the Reydar 3D/AR product viewer"
+        },
+        {
+          "name": "Invoice App",
+          "description": "A full CRUD invoice manager — create, edit, delete and filter invoices by status, with form validation, light/dark themes and a responsive layout. One of my earliest portfolio builds while learning web development.",
+          "url": "https://invoice-app.onrender.com/",
+          "linkLabel": "invoice-app.onrender.com",
+          "imageSrc": "assets/images/invoice-app.png",
+          "imageAlt": "Screenshot of the Invoice App landing screen",
+          "infoNote": [
+            "Login required — contact me for demo credentials."
+          ]
         }
       ]
     },
