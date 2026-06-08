@@ -74,14 +74,14 @@
           "description": "A full CRUD invoice manager — create, edit, delete and filter invoices by status, with form validation, light/dark themes and a responsive layout. One of my earliest portfolio builds while learning web development.",
           "url": "https://invoice-app.onrender.com/",
           "linkLabel": "invoice-app.onrender.com",
-          "imageSrc": "assets/images/invoice-app-1.png",
+          "imageSrc": "assets/images/invoice-app-edit.png",
           "imageAlt": "Invoice App edit-invoice form",
           "infoNote": [
             "Login required — contact me for demo credentials."
           ],
           "secondaryImage": [
             {
-              "src": "assets/images/invoice-app-2.png",
+              "src": "assets/images/invoice-app-list.png",
               "alt": "Invoice App invoices list"
             }
           ]
