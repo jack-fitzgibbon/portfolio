@@ -31,7 +31,8 @@
       "title": "About Me",
       "paras": [
         "A London-based full stack engineer specialising in building scalable web applications from scratch. I'm well versed in modern engineering practices, utilising AI agentic workflows like Claude Code to accelerate ideation, development, and code reviews.",
-        "A detail-oriented problem solver, I take complete end-to-end ownership to deliver secure, reliable software that maps directly to user needs. Whether building from the ground up or improving existing systems, I focus on clear, maintainable solutions that perform reliably at scale."
+        "A detail-oriented problem solver, I take complete end-to-end ownership to deliver secure, reliable software that maps directly to user needs. Whether building from the ground up or improving existing systems, I focus on clear, maintainable solutions that perform reliably at scale.",
+        "On the front end I work primarily with React and Angular; on the backend with Node.js and TypeScript microservices. I manage cloud infrastructure as code using Pulumi across Azure and AWS, with CosmosDB, Redis and SQL for data and SignalR for real-time updates — and reach for Python or PHP/Laravel where a project calls for it."
       ]
     },
     "projects": {
