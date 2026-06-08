@@ -72,6 +72,32 @@
       </section>
 
       <section class="container">
+        <h2>{{content.careerJourney.title}}</h2>
+        <ul class="timeline">
+          @foreach (content.careerJourney.timeline as item) {
+          <li>
+            <div class="logo">
+              <img src="{{item.logoSrc}}" alt="{{item.logoAlt}}" />
+            </div>
+
+            <article>
+              <time>{{item.dateRange}}</time>
+              <h3>{{item.title}}</h3>
+              @foreach (item.intro as para) {
+              <p>{{para}}</p>
+              }
+              <ul>
+                @foreach (item.bullets as bullet) {
+                <li>{{bullet}}</li>
+                }
+              </ul>
+            </article>
+          </li>
+          }
+        </ul>
+      </section>
+
+      <section class="container">
         <h2>{{content.projects.title}}</h2>
         <ul class="projects">
           @foreach (content.projects.items as project) {
@@ -105,32 +131,6 @@
                   }
                 </div>
               </div>
-            </article>
-          </li>
-          }
-        </ul>
-      </section>
-
-      <section class="container">
-        <h2>{{content.careerJourney.title}}</h2>
-        <ul class="timeline">
-          @foreach (content.careerJourney.timeline as item) {
-          <li>
-            <div class="logo">
-              <img src="{{item.logoSrc}}" alt="{{item.logoAlt}}" />
-            </div>
-
-            <article>
-              <time>{{item.dateRange}}</time>
-              <h3>{{item.title}}</h3>
-              @foreach (item.intro as para) {
-              <p>{{para}}</p>
-              }
-              <ul>
-                @foreach (item.bullets as bullet) {
-                <li>{{bullet}}</li>
-                }
-              </ul>
             </article>
           </li>
           }
