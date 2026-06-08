@@ -56,13 +56,12 @@
           "logoSrc": "assets/images/eklipx-logo.jpg",
           "logoAlt": "Eklipx logo",
           "bullets": [
-            "Second engineering hire building an OTC derivatives platform that enables dealers to price, book, value, and manage the full lifecycle of structured financial products, while providing counterparties with a white-label portal to view their positions and statements.",
-            "Building and deploying microservices on Azure Functions (Node.js/TypeScript).",
-            "Frontend applications in Angular and React.",
-            "Infrastructure-as-code with Pulumi on Azure.",
-            "Multi-tenant authentication via Azure AD B2C with MSAL.",
-            "Real-time updates using SignalR.",
-            "Azure CosmosDB and Redis."
+            "Second engineering hire on an OTC derivatives platform letting dealers price, book, value, and manage the full lifecycle of structured products, with a white-label counterparty portal.",
+            "Designed and shipped a real-time risk & trade management dashboard with customisable widgets, giving dealers at-a-glance book management and risk-based decisions — built on Azure Functions (Node/TS), SignalR and CosmosDB.",
+            "Architected an article view-tracking system and author analytics screen (summary metrics + time-series), which underpinned automated revenue-share calculations with Stripe payouts and dynamic PDF reporting for admins.",
+            "Built a reusable, framework-agnostic audit event-logging package now used across the company's products.",
+            "Introduced a Cypress end-to-end suite covering all critical user flows, wired into Azure CI to gate PRs into main and catch regressions before production.",
+            "Delivered multi-tenant authentication via Azure AD B2C / MSAL and provisioned cloud infrastructure as code with Pulumi on Azure."
           ]
         },
         {
@@ -71,9 +70,12 @@
           "logoSrc": "assets/images/we-are-sweet-logo.png",
           "logoAlt": "We Are Sweet logo",
           "bullets": [
-            "Full Stack Developer working on projects with varied tech stacks including Laravel, React, Gatsby, NodeJS, WordPress, Ionic and integrating with numerous 3rd party APIs.",
-            "Experience managing AWS infrastructure and provisioning using Pulumi (IaC).",
-            "Towards the end of this role we moved to a SaaS model where I helped develop a React client for an award winning real-time second screen experience aimed at endurance sports."
+            "Delivered web and mobile products across varied stacks — Laravel, React, Gatsby, Node.js, WordPress, Ionic — integrating numerous third-party APIs.",
+            "Built the front end for an industry-first real-time second-screen experience for the PTO, winning the 2024 ISC Innovation Award; sustained multiple updates per second without degrading performance.",
+            "Engineered a real-time race-logistics system fusing RFID chip-timing and GPS data, delivering better multi-day accuracy and reliability than competitor solutions.",
+            "Helped transition the company to a SaaS model, developing the React client for the second-screen product aimed at endurance sports.",
+            "Provisioned and managed AWS infrastructure with Pulumi (IaC), prioritising security and scalability for high-volume live data.",
+            "Maintained and extended the Concerts for Carers site and ticket-balloting system."
           ]
         },
         {
@@ -82,10 +84,11 @@
           "logoSrc": "assets/images/engine-creative-logo.png",
           "logoAlt": "Engine Creative logo",
           "bullets": [
-            "Developed a React 3D & AR product viewer enabling users to visualise products in their own space before purchasing. Used by companies such as Samsung, Howdens, HP and Ultimaker.",
-            "Integrated google/model-viewer for 3D rendering and mobile AR capabilities.",
-            "Preact client for optimal performance on mobile devices.",
-            "AWS S3 blob storage & Lambda to serve models to client."
+            "Developed a React-based 3D & AR product viewer letting users visualise products in their own space before buying — used by Samsung, Howdens, HP and Ultimaker.",
+            "Integrated google/model-viewer for 3D rendering and mobile AR, delivering immersive in-space product previews.",
+            "Built the client in Preact for optimal performance on mobile devices.",
+            "Served 3D assets to the client via AWS S3 storage and Lambda.",
+            "Designed a white-label solution with customisable branding (colour schemes, logos) for easy per-client adaptation."
           ]
         }
       ]
