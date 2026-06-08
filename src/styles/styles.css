@@ -265,11 +265,11 @@ html {
 .project-image:has(.project-image-secondary) .project-image-primary {
   top: 6%;
   left: 5%;
-  z-index: 1;
 }
 
+/* No z-index: DOM order keeps this layered above the primary while staying
+   below the card's click overlay so hover/click still hit the link. */
 .project-image:has(.project-image-secondary) .project-image-secondary {
-  z-index: 2;
   right: 5%;
   bottom: 6%;
 }
