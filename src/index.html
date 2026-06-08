@@ -104,7 +104,10 @@
           <li>
             <article>
               <div class="project-image">
-                <img src="{{project.imageSrc}}" alt="{{project.imageAlt}}" loading="lazy" />
+                <img class="project-image-primary" src="{{project.imageSrc}}" alt="{{project.imageAlt}}" loading="lazy" />
+                @foreach (project.secondaryImage as img) {
+                <img class="project-image-secondary" src="{{img.src}}" alt="{{img.alt}}" loading="lazy" />
+                }
               </div>
               <div class="project-content">
                 <h3>
