@@ -61,6 +61,7 @@ html {
 
   border: none;
   display: flex;
+  z-index: 100;
   position: fixed;
   top: var(--inset);
   width: var(--size);
