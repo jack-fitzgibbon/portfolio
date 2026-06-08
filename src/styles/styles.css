@@ -196,12 +196,12 @@ html {
   flex-direction: column;
 }
 
-.projects a {
+.projects article {
   display: flex;
+  position: relative;
   overflow: hidden;
   flex-direction: column;
   border-radius: 0.5rem;
-  text-decoration: none;
   color: hsl(var(--foreground));
   border: 1px solid hsl(var(--border));
   transition:
@@ -209,8 +209,8 @@ html {
     background-color var(--transition-duration) ease-in-out;
 }
 
-.projects a:hover,
-.projects a:focus-visible {
+.projects article:has(a:hover),
+.projects article:has(a:focus-visible) {
   background-color: hsl(var(--secondary));
   border-color: hsl(var(--muted-foreground));
 }
@@ -230,7 +230,7 @@ html {
   display: block;
 }
 
-.projects article {
+.project-content {
   flex: 1;
   display: flex;
   padding: 1.25rem;
@@ -238,11 +238,22 @@ html {
 }
 
 .projects h3 {
-  gap: 0.4rem;
-  display: flex;
   font-size: 1rem;
-  align-items: center;
   margin-bottom: 0.35rem;
+}
+
+.projects h3 a {
+  gap: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.projects h3 a::before {
+  inset: 0;
+  content: "";
+  position: absolute;
 }
 
 .projects h3 svg {
@@ -250,8 +261,8 @@ html {
   transition: transform var(--transition-duration) ease-in-out;
 }
 
-.projects a:hover h3 svg,
-.projects a:focus-visible h3 svg {
+.projects article:has(a:hover) h3 svg,
+.projects article:has(a:focus-visible) h3 svg {
   transform: translate(2px, -2px);
 }
 
@@ -311,7 +322,7 @@ html {
     padding-bottom: 3.5rem;
   }
 
-  .projects a {
+  .projects article {
     flex-direction: row;
     align-items: stretch;
   }

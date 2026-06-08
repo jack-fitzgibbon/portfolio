@@ -76,22 +76,24 @@
         <ul class="projects">
           @foreach (content.projects.items as project) {
           <li>
-            <a href="{{project.url}}" target="_blank" rel="noopener noreferrer">
+            <article>
               <div class="project-image">
                 <img src="{{project.imageSrc}}" alt="{{project.imageAlt}}" loading="lazy" />
               </div>
-              <article>
+              <div class="project-content">
                 <h3>
-                  <span>{{project.name}}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M7 17 17 7"></path>
-                    <path d="M7 7h10v10"></path>
-                  </svg>
+                  <a href="{{project.url}}" target="_blank" rel="noopener noreferrer">
+                    <span>{{project.name}}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M7 17 17 7"></path>
+                      <path d="M7 7h10v10"></path>
+                    </svg>
+                  </a>
                 </h3>
                 <p>{{project.description}}</p>
                 <span class="link-label">{{project.linkLabel}}</span>
-              </article>
-            </a>
+              </div>
+            </article>
           </li>
           }
         </ul>
