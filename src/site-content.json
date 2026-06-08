@@ -30,8 +30,8 @@
     "about": {
       "title": "About Me",
       "paras": [
-        "A self-taught software engineer and technologist based in London. Passionate about turning complex ideas into robust, user-centric products. With hands-on experience handling the full lifecycle of web and mobile projects, I thrive in environments where technology and creativity meet real business needs.",
-        "I have a pragmatic approach, always seeking straightforward, maintainable solutions to real problems. Whether I'm building from scratch or improving existing systems, I enjoy breaking down challenges and crafting clear, elegant solutions that feel intuitive to use and perform reliably at scale."
+        "A London-based full stack engineer specialising in building scalable web applications from scratch. I'm well versed in modern engineering practices, utilising AI agentic workflows like Claude Code to accelerate ideation, development, and code reviews.",
+        "A detail-oriented problem solver, I take complete end-to-end ownership to deliver secure, reliable software that maps directly to user needs. Whether building from the ground up or improving existing systems, I focus on clear, maintainable solutions that perform reliably at scale."
       ]
     },
     "projects": {
@@ -52,16 +52,17 @@
       "timeline": [
         {
           "dateRange": "Jan 2025 - Present",
-          "title": "Developer Technologist @ Eklipx",
+          "title": "Technologist @ Eklipx",
           "logoSrc": "assets/images/eklipx-logo.jpg",
           "logoAlt": "Eklipx logo",
           "bullets": [
-            "Designed, developed and launched a real-time risk and trade management dashboard. It's fully customizable with various widgets enabling risk based decisions and easy book management.",
-            "Architected and built an article view tracking system. Alongside this delivered an analytics screen for authors summary metrics and time series graphs to dive deeper into the data.",
-            "Underpinned by the article view tracking, I developed automated revenue share calculations, with Stripe for author payouts and dynamic PDF reporting for admins in the front end.",
-            "Architected and built an agnostic audit event logging package used internally for our products.",
-            "Introduced a Cypress end-to-end test suite covering all critical user flows for our Intelligence product. Integrated into Azure to run on PRs into main, preventing bugs in production.",
-            "Overhaul of all transactional emails using a single base template component for the purposes of consistency and maintainability."
+            "Second engineering hire building an OTC derivatives platform that enables dealers to price, book, value, and manage the full lifecycle of structured financial products, while providing counterparties with a white-label portal to view their positions and statements.",
+            "Building and deploying microservices on Azure Functions (Node.js/TypeScript).",
+            "Frontend applications in Angular and React.",
+            "Infrastructure-as-code with Pulumi on Azure.",
+            "Multi-tenant authentication via Azure AD B2C with MSAL.",
+            "Real-time updates using SignalR.",
+            "Azure CosmosDB and Redis."
           ]
         },
         {
@@ -70,23 +71,21 @@
           "logoSrc": "assets/images/we-are-sweet-logo.png",
           "logoAlt": "We Are Sweet logo",
           "bullets": [
-            "Developed front-end for industry first second-screen experience used by PTO. Winning the 2024 ISC Innovation Award. The web experience handles multiple real-time updates per second while maintaining optimal performance.",
-            "Ensured cross-platform compatibility and optimal performance across mobile and desktop devices to maintain accessibility for diverse user base.",
-            "Built real-time race logistics management system integrating RFID chip timing and GPS data to deliver superior accuracy and reliability over multi-day events compared to competitor solutions.",
-            "Maintained and developed new features for the Concerts for Carers website and ticket balloting system.",
-            "Contributed to AWS infrastructure development with focus on security and scalability to support high-volume live data processing."
+            "Full Stack Developer working on projects with varied tech stacks including Laravel, React, Gatsby, NodeJS, WordPress, Ionic and integrating with numerous 3rd party APIs.",
+            "Experience managing AWS infrastructure and provisioning using Pulumi (IaC).",
+            "Towards the end of this role we moved to a SaaS model where I helped develop a React client for an award winning real-time second screen experience aimed at endurance sports."
           ]
         },
         {
           "dateRange": "Mar 2022 - Aug 2022",
-          "title": "Front End Developer @ Engine Creative",
+          "title": "Front End Developer @ Engine Creative & Reydar",
           "logoSrc": "assets/images/engine-creative-logo.png",
           "logoAlt": "Engine Creative logo",
           "bullets": [
-            "Developed 3D & AR product viewer enabling users to visualise products in their own space before purchasing. Used by companies such as Samsung, Invisalign, Dell, HP and Ultimaker.",
-            "Designed white-label solution with customizable branding, allowing easy adaptation of color schemes and logos for different client requirements.",
-            "Integrated advanced 3D/AR rendering and interaction capabilities to create immersive product preview experiences that enhanced user engagement.",
-            "Led complete project lifecycle from concept to deployment as sole developer, managing all aspects of development, testing, and client delivery."
+            "Developed a React 3D & AR product viewer enabling users to visualise products in their own space before purchasing. Used by companies such as Samsung, Howdens, HP and Ultimaker.",
+            "Integrated google/model-viewer for 3D rendering and mobile AR capabilities.",
+            "Preact client for optimal performance on mobile devices.",
+            "AWS S3 blob storage & Lambda to serve models to client."
           ]
         }
       ]
