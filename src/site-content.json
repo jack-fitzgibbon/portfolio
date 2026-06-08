@@ -44,7 +44,10 @@
           "url": "https://embrfire.co.uk",
           "linkLabel": "embrfire.co.uk",
           "imageSrc": "assets/images/embr-screenshot.png",
-          "imageAlt": "Screenshot of the embr fire protection marketing site"
+          "imageAlt": "Screenshot of the embr fire protection marketing site",
+          "infoNote": [
+            "Login required — contact me for demo credentials."
+          ]
         },
         {
           "name": "3D/AR Product Viewer",

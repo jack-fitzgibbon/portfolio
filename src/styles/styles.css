@@ -291,6 +291,7 @@ html {
 .project-footer {
   gap: 0.45rem;
   display: flex;
+  position: relative;
   margin-top: auto;
   align-items: center;
 }
@@ -319,7 +320,7 @@ html {
   bottom: calc(100% + 0.5rem);
   z-index: 2;
   width: max-content;
-  max-width: 15rem;
+  max-width: 100%;
   position: absolute;
   padding: 0.5rem 0.65rem;
   font-size: 0.75rem;
@@ -329,7 +330,7 @@ html {
   background-color: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   border-radius: 0.4rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   opacity: 0;
   visibility: hidden;
   transform: translateY(4px);
@@ -339,9 +340,9 @@ html {
     visibility var(--transition-duration) ease-in-out;
 }
 
-.info-note:hover .info-tooltip,
-.info-note:focus .info-tooltip,
-.info-note:focus-within .info-tooltip {
+.info-note:hover ~ .info-tooltip,
+.info-note:focus ~ .info-tooltip,
+.info-tooltip:hover {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
