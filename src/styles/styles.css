@@ -241,30 +241,37 @@ html {
   display: block;
 }
 
-/* Collage: shown only when a project supplies a second screenshot. */
+/* Collage: two equally-sized screenshots layered on a diagonal — primary
+   toward the top-left, secondary overlapping toward the bottom-right.
+   Shown only when a project supplies a second screenshot. */
 .project-image:has(.project-image-secondary) {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
+  background-color: hsl(var(--secondary));
 }
 
-.project-image:has(.project-image-secondary) .project-image-primary {
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.project-image:has(.project-image-secondary) img {
+  width: 64%;
+  height: auto;
+  aspect-ratio: 16 / 10;
   position: absolute;
   object-fit: cover;
   object-position: top center;
-}
-
-.project-image .project-image-secondary {
-  width: 46%;
-  right: 5%;
-  bottom: 7%;
-  height: auto;
-  position: absolute;
   border-radius: 0.4rem;
   border: 2px solid hsl(var(--background));
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.project-image:has(.project-image-secondary) .project-image-primary {
+  top: 6%;
+  left: 5%;
+  z-index: 1;
+}
+
+.project-image:has(.project-image-secondary) .project-image-secondary {
+  z-index: 2;
+  right: 5%;
+  bottom: 6%;
 }
 
 .project-content {
