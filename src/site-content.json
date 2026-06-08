@@ -56,8 +56,10 @@
           "title": "Technologist @ Eklipx",
           "logoSrc": "assets/images/eklipx-logo.jpg",
           "logoAlt": "Eklipx logo",
+          "intro": [
+            "Second engineering hire on an OTC derivatives platform letting dealers price, book, value, and manage the full lifecycle of structured products, with a white-label counterparty portal."
+          ],
           "bullets": [
-            "Second engineering hire on an OTC derivatives platform letting dealers price, book, value, and manage the full lifecycle of structured products, with a white-label counterparty portal.",
             "Designed and shipped a real-time risk & trade management dashboard with customisable widgets, giving dealers at-a-glance book management and risk-based decisions — built on Azure Functions (Node/TS), SignalR and CosmosDB.",
             "Architected an article view-tracking system and author analytics screen (summary metrics + time-series), which underpinned automated revenue-share calculations with Stripe payouts and dynamic PDF reporting for admins.",
             "Built a reusable, framework-agnostic audit event-logging package now used across the company's products.",
@@ -70,8 +72,10 @@
           "title": "Full Stack Developer @ We Are Sweet",
           "logoSrc": "assets/images/we-are-sweet-logo.png",
           "logoAlt": "We Are Sweet logo",
+          "intro": [
+            "Delivered web and mobile products across varied stacks — Laravel, React, Gatsby, Node.js, WordPress, Ionic — integrating numerous third-party APIs."
+          ],
           "bullets": [
-            "Delivered web and mobile products across varied stacks — Laravel, React, Gatsby, Node.js, WordPress, Ionic — integrating numerous third-party APIs.",
             "Built the front end for an industry-first real-time second-screen experience for the PTO, winning the 2024 ISC Innovation Award; sustained multiple updates per second without degrading performance.",
             "Engineered a real-time race-logistics system fusing RFID chip-timing and GPS data, delivering better multi-day accuracy and reliability than competitor solutions.",
             "Helped transition the company to a SaaS model, developing the React client for the second-screen product aimed at endurance sports.",
@@ -84,8 +88,10 @@
           "title": "Front End Developer @ Engine Creative & Reydar",
           "logoSrc": "assets/images/engine-creative-logo.png",
           "logoAlt": "Engine Creative logo",
+          "intro": [
+            "Developed a React-based 3D & AR product viewer letting users visualise products in their own space before buying — used by Samsung, Howdens, HP and Ultimaker."
+          ],
           "bullets": [
-            "Developed a React-based 3D & AR product viewer letting users visualise products in their own space before buying — used by Samsung, Howdens, HP and Ultimaker.",
             "Integrated google/model-viewer for 3D rendering and mobile AR, delivering immersive in-space product previews.",
             "Built the client in Preact for optimal performance on mobile devices.",
             "Served 3D assets to the client via AWS S3 storage and Lambda.",

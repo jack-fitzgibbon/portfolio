@@ -155,6 +155,16 @@ html {
   margin-bottom: 0.5rem;
 }
 
+.timeline article p {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.timeline article p + ul {
+  margin-top: 0.5rem;
+}
+
 .timeline article ul {
   margin-top: 0.4rem;
   font-size: 0.875rem;
