@@ -40,30 +40,29 @@
         <path d="m19.07 4.93-1.41 1.41"></path>
       </svg>
     </button>
+    <header class="hero">
+      <div class="container">
+        <h1>{{content.hero.title}}</h1>
+        <p>{{content.hero.subtitle}}</p>
+        <p class="location">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          </svg>
+
+          <span>{{content.hero.location}}</span>
+        </p>
+
+        <nav class="social-links" aria-label="Social media links">
+          @foreach (content.socialLinks as link) {
+          <a href="{{link.url}}" target="_blank" aria-label="{{link.ariaLabel}}"> {{link.iconSvg}} </a>
+          }
+        </nav>
+      </div>
+    </header>
     <main>
-      <header class="hero" role="banner">
-        <div class="container">
-          <h1>{{content.hero.title}}</h1>
-          <p>{{content.hero.subtitle}}</p>
-          <address>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-            </svg>
-
-            <span>{{content.hero.location}}</span>
-          </address>
-
-          <nav class="social-links" role="navigation" aria-label="Social media links">
-            @foreach (content.socialLinks as link) {
-            <a href="{{link.url}}" target="_blank" aria-label="{{link.ariaLabel}}"> {{link.iconSvg}} </a>
-            }
-          </nav>
-        </div>
-      </header>
-
-      <section class="container">
-        <h2>{{content.about.title}}</h2>
+      <section class="container" aria-labelledby="about-heading">
+        <h2 id="about-heading">{{content.about.title}}</h2>
         <div class="about-me">
           @foreach (content.about.paras as para) {
           <p>{{para}}</p>
@@ -71,8 +70,8 @@
         </div>
       </section>
 
-      <section class="container">
-        <h2>{{content.projects.title}}</h2>
+      <section class="container" aria-labelledby="projects-heading">
+        <h2 id="projects-heading">{{content.projects.title}}</h2>
         <ul class="projects">
           @foreach (content.projects.items as project) {
           <li>
@@ -114,8 +113,8 @@
         </ul>
       </section>
 
-      <section class="container">
-        <h2>{{content.careerJourney.title}}</h2>
+      <section class="container" aria-labelledby="experience-heading">
+        <h2 id="experience-heading">{{content.careerJourney.title}}</h2>
         <ul class="timeline">
           @foreach (content.careerJourney.timeline as item) {
           <li>
