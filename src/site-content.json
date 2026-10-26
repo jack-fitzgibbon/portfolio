@@ -30,9 +30,9 @@
     "about": {
       "title": "About Me",
       "paras": [
-        "A London-based full stack engineer specialising in building scalable web applications from scratch. I'm well versed in modern engineering practices, utilising AI agentic workflows like Claude Code to accelerate ideation, development, and code reviews.",
-        "A detail-oriented problem solver, I take complete end-to-end ownership to deliver secure, reliable software that maps directly to user needs. Whether building from the ground up or improving existing systems, I focus on clear, maintainable solutions that perform reliably at scale.",
-        "On the front end I work primarily with React and Angular; on the backend with Node.js and TypeScript microservices. I manage cloud infrastructure as code using Pulumi across Azure and AWS."
+        "Self-taught software engineer based in London. I skipped university and learned by building — and haven't really stopped since.",
+        "These days I'm mostly writing Go, TypeScript and React at Sliide, building internal tooling.",
+        "I also take on freelance projects alongside my full-time role, usually marketing sites, web apps and internal tools for small teams. I handle the whole thing end to end, from figuring out what you need to getting it live. If that sounds useful, send me an email."
       ]
     },
     "projects": {
