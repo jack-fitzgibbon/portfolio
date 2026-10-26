@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: ["v2"]
+    branches: ["production"]
 
 jobs:
   build:
