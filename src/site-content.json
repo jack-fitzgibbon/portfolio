@@ -92,20 +92,24 @@
       "title": "Career Journey",
       "timeline": [
         {
-          "dateRange": "Jan 2025 - Present",
+          "dateRange": "Oct 2026 - Present",
+          "title": "Full Stack Engineer @ Sliide",
+          "logoSrc": "assets/images/sliide-logo.jpg",
+          "logoAlt": "Sliide logo",
+          "intro": [
+            "Part of the Centris internal tooling squad, building a configuration platform that lets teams set up and manage white-labelled app instances and create A/B tests without engineering involvement."
+          ],
+          "bullets": []
+        },
+        {
+          "dateRange": "Jan 2025 - Oct 2026",
           "title": "Technologist @ Eklipx",
           "logoSrc": "assets/images/eklipx-logo.jpg",
           "logoAlt": "Eklipx logo",
           "intro": [
-            "Second engineering hire on an OTC derivatives platform letting dealers price, book, value, and manage the full lifecycle of structured products, with a white-label counterparty portal."
+            "Second engineering hire on a greenfield OTC derivatives platform letting dealers price, book, value, and manage the full lifecycle of structured products in real-time, with a white-label counterparty portal."
           ],
-          "bullets": [
-            "Designed and shipped a real-time risk & trade management dashboard with customisable widgets, giving dealers at-a-glance book management and risk-based decisions — built on Azure Functions (Node/TS), SignalR and CosmosDB.",
-            "Architected an article view-tracking system and author analytics screen (summary metrics + time-series), which underpinned automated revenue-share calculations with Stripe payouts and dynamic PDF reporting for admins.",
-            "Built a reusable, framework-agnostic audit event-logging package now used across the company's products.",
-            "Introduced a Cypress end-to-end suite covering all critical user flows, wired into Azure CI to gate PRs into main and catch regressions before production.",
-            "Delivered multi-tenant authentication via Azure AD B2C / MSAL and provisioned cloud infrastructure as code with Pulumi on Azure."
-          ]
+          "bullets": []
         },
         {
           "dateRange": "Aug 2022 - Jan 2025",
@@ -113,30 +117,19 @@
           "logoSrc": "assets/images/we-are-sweet-logo.png",
           "logoAlt": "We Are Sweet logo",
           "intro": [
-            "Delivered web and mobile products across varied stacks — Laravel, React, Gatsby, Node.js, WordPress, Ionic — integrating numerous third-party APIs."
+            "Small team that developed an industry-first real-time second-screen experience for the PTO, winning the 2024 ISC Innovation Award. As well as development, I also managed on site operations for race days - putting sensors on athletes, swapping out faulty sensors and connecting sensors to our ingestion pipeline."
           ],
-          "bullets": [
-            "Built the front end for an industry-first real-time second-screen experience for the PTO, winning the 2024 ISC Innovation Award; sustained multiple updates per second without degrading performance.",
-            "Integrated RFID chip-timing and GPS data into a real-time race-logistics system — storing raw and processed data in DynamoDB, transforming and cleaning it before pushing it out to clients via AWS AppSync.",
-            "Helped transition the company to a SaaS model, developing the React client for the second-screen product aimed at endurance sports.",
-            "Provisioned and managed AWS infrastructure with Pulumi (IaC), prioritising security and scalability for high-volume live data.",
-            "Maintained and extended the Concerts for Carers site and ticket-balloting system."
-          ]
+          "bullets": []
         },
         {
           "dateRange": "Mar 2022 - Aug 2022",
-          "title": "Front End Developer @ Engine Creative & Reydar",
+          "title": "Front End Developer @ Engine Creative",
           "logoSrc": "assets/images/engine-creative-logo.png",
           "logoAlt": "Engine Creative logo",
           "intro": [
-            "Developed a React-based 3D & AR product viewer letting users visualise products in their own space before buying — used by Samsung, Howdens, HP and Ultimaker."
+            "Developed a React-based 3D & AR product viewer letting users visualise products in their own space before buying - used by Samsung, Howdens, HP and Ultimaker."
           ],
-          "bullets": [
-            "Integrated google/model-viewer for 3D rendering and mobile AR, delivering immersive in-space product previews.",
-            "Built the client in Preact for optimal performance on mobile devices.",
-            "Served 3D assets to the client via AWS S3 storage and Lambda.",
-            "Designed a white-label solution with customisable branding (colour schemes, logos) for easy per-client adaptation."
-          ]
+          "bullets": []
         }
       ]
     }

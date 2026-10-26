@@ -178,6 +178,10 @@ html {
   color: hsl(var(--muted-foreground));
 }
 
+.timeline article ul:empty {
+  display: none;
+}
+
 .timeline > li {
   position: relative;
 }
